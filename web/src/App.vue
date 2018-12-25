@@ -2,6 +2,7 @@
   <div id="app">
     <img src="./assets/logo.png">
     <p>233</p>
+    <router-link to="/login">Go to Foo</router-link>
     <router-view></router-view>
   </div>
 </template>
