@@ -2,8 +2,9 @@
   <div id="app">
     <img src="./assets/logo.png">
     <p>233</p>
-    <router-link to="/login">Go to Foo</router-link>
-    <router-view></router-view>
+    <router-link to="/login">Login</router-link>
+    <router-link to="/person">个人主页</router-link>
+    <router-view name="default"></router-view>
   </div>
 </template>
 

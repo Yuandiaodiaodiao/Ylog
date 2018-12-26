@@ -3,13 +3,16 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+// element
+import Element from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
+Vue.use(Element, { size: 'small', zIndex: 3000 })
 
 Vue.config.productionTip = false
-
+console.log('pre start1')
 /* eslint-disable no-new */
 new Vue({
   el: '#app', // 233
   router,
-  components: { App },
-  template: '<App/>'
+  render: h => h(App)
 })
