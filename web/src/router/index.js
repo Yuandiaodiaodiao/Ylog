@@ -1,23 +1,16 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
-import Personal from '@/components/Personal'
+import MainList from '@/components/MainList'
+import SideMain from '@/components/SideMain'
 Vue.use(Router) // 开插件
 const route = [
   {
     path: '/',
-    name: 'HelloWorld',
-    component: HelloWorld
-  },
-  {
-    path: '/login',
-    name: 'HelloWorld',
-    component: HelloWorld
-  },
-  {
-    path: '/person',
-    name: 'Personal',
-    component: Personal
+    name: 'Main',
+    components: {
+      main: MainList,
+      side: SideMain
+    }
   }
 ]
 export default new Router({
