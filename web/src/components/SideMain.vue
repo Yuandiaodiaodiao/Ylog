@@ -1,6 +1,8 @@
 <template>
-    <div>
-      <div>side</div>
+    <div style="width: 200px">
+      <el-card>
+        233
+      </el-card>
     </div>
 </template>
 

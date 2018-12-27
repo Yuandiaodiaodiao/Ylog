@@ -5,7 +5,7 @@
           <Menu></Menu>
         </el-header>
         <el-container>
-          <el-aside width="200px">
+          <el-aside width=auto>
             <router-view name="side"></router-view>
           </el-aside>
           <el-main>
@@ -42,7 +42,9 @@ export default {
   background-color: #f6f6f6;
 }
 .el-header{
+  margin-top: 0px;
   background-color: #ffffff;
-
+  box-shadow: 1px 1px 5px #cacaca ;
+  margin-bottom: 5px;
 }
 </style>
