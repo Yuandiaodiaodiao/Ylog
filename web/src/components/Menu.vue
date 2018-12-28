@@ -8,21 +8,20 @@
         <div class="item1" style="font-weight: bold ">YLOG</div>
       </el-col>
       <el-col :span="20">
-        <el-menu  class="right-side" mode="horizontal" >
-          <el-menu-item v-show="true" index="0">Login</el-menu-item>
+        <el-menu router="true" :default-active="$route.path" class="right-side" mode="horizontal" >
+          <el-menu-item  v-show="true" index="/login" :route="{path: '/login'}">Login</el-menu-item>
           <el-menu-item index="1">Space</el-menu-item>
-          <el-menu-item index="2">New</el-menu-item>
-          <el-menu-item index="3">Create</el-menu-item>
+          <el-menu-item index="/" :route="{path: '/'}">New</el-menu-item>
+          <el-menu-item index="/create" :route="{path: '/create'}">Create</el-menu-item>
           <el-menu-item index="4">Message</el-menu-item>
-          <el-menu-item index="5">
-            <img class="img1" src="https://s1.ax1x.com/2018/12/26/FgDePg.jpg" alt="FgDePg.jpg" border="0"/>
-          </el-menu-item>
           <el-submenu :show-timeout=50 :hide-timeout=50 index="4">
-            <template slot="title">{{userNickName}}</template>
+            <template slot="title" class="col1">
+              <img style="height: 50%;" class="img-logo" src="https://s1.ax1x.com/2018/12/26/FgDePg.jpg" alt="FgDePg.jpg" border="0"/>
+            </template>
             <el-menu-item index="2-1">Profile</el-menu-item>
             <el-menu-item index="2-2">Setting</el-menu-item>
             <el-menu-item index="2-3">About</el-menu-item>
-            <el-menu-item index="2-4">Logout</el-menu-item>
+            <el-menu-item index="2-4" style="color: #F56C6C">Logout</el-menu-item>
           </el-submenu>
         </el-menu>
       </el-col>
@@ -43,15 +42,10 @@ export default {
   .right-side{
     float: right;
   }
-  .img1{
-    height: 100%;
-    margin-bottom: 10px;
-  }
-
   .img-logo{
     vertical-align: middle;
   }
-  .el-col {
+  .col1 {
     line-height: 60px;
     border-radius: 4px;
   }
