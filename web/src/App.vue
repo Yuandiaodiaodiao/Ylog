@@ -22,7 +22,22 @@ export default {
   name: 'App',
   components: {
     Menu
+  },
+  method: {
+  },
+  created: async function () {
+    this.$store.state.api_url = 'http://' + window.location.hostname + ':1024' + '/api'
+    console.log('login_cookie')
+    if (this.$cookies.isKey('username') && this.$cookies.isKey('password')) {
+      this.$store.state.username = this.$cookies.get('username')
+      let res = await this.$login_api(this.$cookies.get('username'), this.$cookies.get('password'))
+      this.$store.commit('login', res.code)
+      if (res.code === true) {
+        this.$router.push({path: '/space'})
+      }
+    }
   }
+
 }
 </script>
 

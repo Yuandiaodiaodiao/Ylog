@@ -9,7 +9,7 @@
         v-bind:key="item.bid"
         v-bind:title="item.title"
         v-bind:bid="item.bid"
-        v-bind:username="item.username"
+        v-bind:username='false'
         v-bind:summary="item.value.substr(0, 400)"
       ></li>
     </ul>
@@ -72,7 +72,7 @@ export default {
   },
   created: async function () {
     let unixtime = this.$unixtime()
-    let js = await this.$get_ten_api(unixtime, '<')
+    let js = await this.$get_my_api(unixtime, '<', this.$store.state.uid)
     if (js.code === true) {
       this.blogs = js.js
     }

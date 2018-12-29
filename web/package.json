@@ -11,9 +11,13 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "element-ui": "^2.4.11",
+    "js-md5": "^0.7.3",
     "mavon-editor": "^2.6.17",
+    "qs": "^6.6.0",
     "vue": "^2.5.2",
+    "vue-cookies": "^1.5.12",
     "vue-devtools": "^5.0.0-beta.1",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1"
