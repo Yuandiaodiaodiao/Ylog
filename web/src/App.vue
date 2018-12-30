@@ -33,7 +33,7 @@ export default {
       let res = await this.$login_api(this.$cookies.get('username'), this.$cookies.get('password'))
       this.$store.commit('login', res.code)
       if (res.code === true) {
-        this.$router.push({path: '/space'})
+        this.$router.push({path: '/'})
       }
     }
   }

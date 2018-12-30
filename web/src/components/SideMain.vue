@@ -1,5 +1,5 @@
 <template>
-    <div style="width: 200px">
+    <div style="width: 50px">
       <el-card>
         233
       </el-card>

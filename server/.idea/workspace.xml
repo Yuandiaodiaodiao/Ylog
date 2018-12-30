@@ -2,21 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ebf909d2-bcf2-45e4-a186-937b2205c715" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/mysqltest.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/src/api/api.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/src/components/Article.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/src/components/SpaceList.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../web/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../web/src/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web/src/components/Card.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../web/src/components/Card.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web/src/components/Create.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../web/src/components/Create.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web/src/components/Login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../web/src/components/Login.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web/src/components/MainList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../web/src/components/MainList.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web/src/components/Menu.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../web/src/components/Menu.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/../web/src/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../web/src/router/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../web/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -33,7 +19,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/server.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="69">
+            <state relative-caret-position="-1953">
               <caret line="110" column="23" lean-forward="true" selection-start-line="110" selection-start-column="23" selection-end-line="110" selection-end-column="23" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
@@ -180,12 +166,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1545997686816</updated>
-      <workItem from="1545997688529" duration="40805000" />
+      <workItem from="1545997688529" duration="41406000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40805000" />
+    <option name="totallyTimeSpent" value="41406000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
@@ -203,7 +189,7 @@
       <window_info anchor="bottom" id="File Transfer" weight="0.32853404" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.21351932" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.21351932" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39891893" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -267,7 +253,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/server.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="69">
+        <state relative-caret-position="-1953">
           <caret line="110" column="23" lean-forward="true" selection-start-line="110" selection-start-column="23" selection-end-line="110" selection-end-column="23" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
