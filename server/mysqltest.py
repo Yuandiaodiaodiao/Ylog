@@ -5,7 +5,7 @@ class Mysqldb:
     def __init__(self):
         self.db = pymysql.connect(host='blog.yuandiaodiaodiao.cn',
                                   user='blog',
-                                  password='Wangzixi1108',
+                                  password='Wangzixi',
                                   db='blog',
                                   charset='utf8',
                                   cursorclass=pymysql.cursors.DictCursor
