@@ -26,7 +26,7 @@ export default {
   method: {
   },
   created: async function () {
-    this.$store.state.api_url = 'http://' + window.location.hostname + ':1024' + '/api'
+    this.$store.state.api_url = 'http://' + window.location.hostname + ':80' + '/api'
     console.log('login_cookie')
     if (this.$cookies.isKey('username') && this.$cookies.isKey('password')) {
       this.$store.state.username = this.$cookies.get('username')

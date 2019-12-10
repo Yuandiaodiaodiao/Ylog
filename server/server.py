@@ -4,12 +4,11 @@ import json
 import pymysql
 import time
 
-
 class Mysqldb:
     def __init__(self, post):
-        self.db = pymysql.connect(host='blog.yuandiaodiaodiao.cn',
+        self.db = pymysql.connect(host='yuandiaodiaodiao.cn',
                                   user='blog',
-                                  password='Wangzixi1108',
+                                  password='Wangzixi',
                                   db='blog',
                                   charset='utf8',
                                   cursorclass=pymysql.cursors.DictCursor
@@ -50,14 +49,6 @@ def rechange_str(strs):
 
 #登陆
 class LoginHandler(tornado.web.RequestHandler):
-    """
-    登陆class
-    """
-    def set_default_headers(self):
-        self.set_header('Access-Control-Allow-Origin', f"{self.request.headers['Origin']}")
-        self.set_header("Access-Control-Allow-Headers", "x-requested-with")
-        self.set_header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS')
-        self.set_header('Access-Control-Allow-Credentials', 'true')
 
     def get(self):
         username = self.get_cookie('username')
@@ -104,14 +95,8 @@ class RegisterHandler(LoginHandler):
 
 #创建博客
 class CreateHandler(tornado.web.RequestHandler):
-    def set_default_headers(self):
-        self.set_header('Access-Control-Allow-Origin', f"{self.request.headers['Origin']}")
-        self.set_header("Access-Control-Allow-Headers", "content-type,")
-        self.set_header('Access-Control-Allow-Methods', 'POST,OPTIONS')
-        self.set_header('Access-Control-Allow-Credentials', 'true')
 
     def post(self):
-        self.set_default_headers()
         js = json.loads(self.request.body)
         print(f'create {js}')
         title = change_str(js['title'])
@@ -151,14 +136,8 @@ class CreateHandler(tornado.web.RequestHandler):
 
 #拉取文章内容
 class ArticleHandler(CreateHandler):
-    def set_default_headers(self):
-        self.set_header('Access-Control-Allow-Origin', f"{self.request.headers['Origin']}")
-        self.set_header("Access-Control-Allow-Headers", "content-type,charset=utf-8")
-        self.set_header('Access-Control-Allow-Methods', 'POST,OPTIONS')
-        self.set_header('Access-Control-Allow-Credentials', 'true')
 
     def post(self):
-        self.set_default_headers()
         js = json.loads(self.request.body)
         bid = js['bid']
         with Mysqldb(self) as cursor:
@@ -177,14 +156,8 @@ class ArticleHandler(CreateHandler):
 
 #获取10个文章
 class GetTenHandlder(tornado.web.RequestHandler):
-    def set_default_headers(self):
-        self.set_header('Access-Control-Allow-Origin', f"{self.request.headers['Origin']}")
-        self.set_header("Access-Control-Allow-Headers", "content-type,charset=utf-8")
-        self.set_header('Access-Control-Allow-Methods', 'POST,OPTIONS')
-        self.set_header('Access-Control-Allow-Credentials', 'true')
 
     def post(self):
-        self.set_default_headers()
         js = json.loads(self.request.body)
         unix_time = js['time']
         bigger = js['cmp']
@@ -213,14 +186,8 @@ class GetTenHandlder(tornado.web.RequestHandler):
 
 #获取个人的所有文章
 class GetMyHandlder(tornado.web.RequestHandler):
-    def set_default_headers(self):
-        self.set_header('Access-Control-Allow-Origin', f"{self.request.headers['Origin']}")
-        self.set_header("Access-Control-Allow-Headers", "content-type,charset=utf-8")
-        self.set_header('Access-Control-Allow-Methods', 'POST,OPTIONS')
-        self.set_header('Access-Control-Allow-Credentials', 'true')
 
     def post(self):
-        self.set_default_headers()
         js = json.loads(self.request.body)
         unix_time = js['time']
         bigger = js['cmp']
@@ -244,19 +211,22 @@ class GetMyHandlder(tornado.web.RequestHandler):
 
 #删除文章
 class DelHandlder(tornado.web.RequestHandler):
-    def set_default_headers(self):
-        self.set_header('Access-Control-Allow-Origin', f"{self.request.headers['Origin']}")
-        self.set_header("Access-Control-Allow-Headers", "content-type,charset=utf-8")
-        self.set_header('Access-Control-Allow-Methods', 'POST,OPTIONS')
-        self.set_header('Access-Control-Allow-Credentials', 'true')
 
     def post(self):
-        self.set_default_headers()
         js = json.loads(self.request.body)
         bid = js['bid']
         with Mysqldb(self) as cursor:
             sql = f"delete  from 博客 where bid = '{bid}' "
             cursor.execute(sql)
+class WebServer(tornado.web.RequestHandler):
+    def get(self):
+        self.render('../web/dist/index.html')
+
+settings = {
+    "static_path": "../web/dist/static",
+}
+
+
 
 
 def make_app():
@@ -267,13 +237,15 @@ def make_app():
         (r"/api/article", ArticleHandler),
         (r"/api/getten", GetTenHandlder),
         (r"/api/getmy", GetMyHandlder),
-        (r"/api/del", DelHandlder)
+        (r"/api/del", DelHandlder),
+        (r"/", WebServer)
 
-    ])
+    ],**settings)
+
 
 
 if __name__ == "__main__":
     app = make_app()
-    app.listen(1024)
+    app.listen(80)
     print('stard')
     tornado.ioloop.IOLoop.current().start()
