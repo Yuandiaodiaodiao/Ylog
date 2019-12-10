@@ -38,13 +38,21 @@ def change_str(strs):
 
 
 def rechange_str(strs):
+    """
+    转义字符处理
+    :param strs:
+    :return:
+    """
     strs = strs.replace("\\\\", "\\")
     strs = strs.replace("\\''", "'")
     strs = strs.replace('\\"', '"')
     return strs
 
-
+#登陆
 class LoginHandler(tornado.web.RequestHandler):
+    """
+    登陆class
+    """
     def set_default_headers(self):
         self.set_header('Access-Control-Allow-Origin', f"{self.request.headers['Origin']}")
         self.set_header("Access-Control-Allow-Headers", "x-requested-with")
@@ -70,7 +78,7 @@ class LoginHandler(tornado.web.RequestHandler):
                     {'code': 'error username'}
                 ))
 
-
+#注册
 class RegisterHandler(LoginHandler):
 
     def get(self):
@@ -94,7 +102,7 @@ class RegisterHandler(LoginHandler):
                     {'code': 'success'}
                 ))
 
-
+#创建博客
 class CreateHandler(tornado.web.RequestHandler):
     def set_default_headers(self):
         self.set_header('Access-Control-Allow-Origin', f"{self.request.headers['Origin']}")
@@ -128,7 +136,7 @@ class CreateHandler(tornado.web.RequestHandler):
                 return
         else:
             with Mysqldb(self) as cursor:
-                bid=js['bid']
+                bid = js['bid']
                 sql = f"delete  from 博客 where bid = '{bid}' "
                 cursor.execute(sql)
                 sql = f"""insert into 博客 values ( {bid} ,
@@ -141,7 +149,7 @@ class CreateHandler(tornado.web.RequestHandler):
                 }))
                 return
 
-
+#拉取文章内容
 class ArticleHandler(CreateHandler):
     def set_default_headers(self):
         self.set_header('Access-Control-Allow-Origin', f"{self.request.headers['Origin']}")
@@ -167,7 +175,7 @@ class ArticleHandler(CreateHandler):
                     'code': 'false'
                 }))
 
-
+#获取10个文章
 class GetTenHandlder(tornado.web.RequestHandler):
     def set_default_headers(self):
         self.set_header('Access-Control-Allow-Origin', f"{self.request.headers['Origin']}")
@@ -189,11 +197,11 @@ class GetTenHandlder(tornado.web.RequestHandler):
             result = cursor.fetchmany(10)
             if len(result) >= 1:
                 for x in result:
-                    uid=x['uid']
-                    sql =f"select * from 用户 where uid = '{uid}'"
+                    uid = x['uid']
+                    sql = f"select * from 用户 where uid = '{uid}'"
                     cursor.execute(sql)
-                    res2=cursor.fetchone()
-                    x['username']=res2['昵称']
+                    res2 = cursor.fetchone()
+                    x['username'] = res2['昵称']
                 self.write(json.dumps({
                     'code': 'success',
                     'js': result
@@ -203,6 +211,7 @@ class GetTenHandlder(tornado.web.RequestHandler):
                     'code': 'failed'
                 }))
 
+#获取个人的所有文章
 class GetMyHandlder(tornado.web.RequestHandler):
     def set_default_headers(self):
         self.set_header('Access-Control-Allow-Origin', f"{self.request.headers['Origin']}")
@@ -218,7 +227,7 @@ class GetMyHandlder(tornado.web.RequestHandler):
         desc = 'desc'
         if bigger == '>':
             desc = 'asc'
-        uid=js['uid']
+        uid = js['uid']
         with Mysqldb(self) as cursor:
             sql = f"select * from 博客 where 编辑时间 {bigger} '{unix_time}' and uid = '{uid}' order by 编辑时间 {desc}"
             cursor.execute(sql)
@@ -233,7 +242,7 @@ class GetMyHandlder(tornado.web.RequestHandler):
                     'code': 'failed'
                 }))
 
-
+#删除文章
 class DelHandlder(tornado.web.RequestHandler):
     def set_default_headers(self):
         self.set_header('Access-Control-Allow-Origin', f"{self.request.headers['Origin']}")
@@ -244,10 +253,11 @@ class DelHandlder(tornado.web.RequestHandler):
     def post(self):
         self.set_default_headers()
         js = json.loads(self.request.body)
-        bid=js['bid']
+        bid = js['bid']
         with Mysqldb(self) as cursor:
             sql = f"delete  from 博客 where bid = '{bid}' "
             cursor.execute(sql)
+
 
 def make_app():
     return tornado.web.Application([
